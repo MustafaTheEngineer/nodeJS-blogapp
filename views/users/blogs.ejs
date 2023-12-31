@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('../partials/head') %>
+  </head>
+  <body>
+    <%- include('../partials/nav') %>
+    <div class="container mt-3">
+      <%- include('../partials/blog-card',categories) %>
+      <% if(blogs.filter(b=>b.goster).length > 3) { include('../partials/pagination')
+      } %>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('../partials/head') %>
+  </head>
+  <body>
+    <%- include('../partials/nav') %>
+    <div class="container mt-3">
+      <div class="row">
+        <div class="col-md-12 mt-3">
+          <% if (action != "undefined") { %>
+            <%if (action=="edit") { %>
+              <div class="alert alert-success"> <%= blogid %> id numaralı blog Güncellendi</div>
+            <% } else if (action=="delete") { %>
+              <div class="alert alert-danger">Blog Silindi</div>
+            <% } else if (action=="delete") { %>
+              <div class="alert alert-danger">Blog Silindi</div>
+            <% } else if (action=="create") { %>
+              <div class="alert alert-primary">Blog Oluşturuldu</div>
+            <% } } %>
+
+          <table class="table table-bordered table-striped">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Resim</th>
+                <th>Baslik</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <% blogs.forEach(blog => { %>
+              <tr>
+                <td><%= blog.dataValues.blogid %></td>
+                <td style="width: 150px">
+                  <img
+                    src="/static/images/<%= blog.dataValues.resim %>"
+                    alt=""
+                    class="img-fluid"
+                  />
+                </td>
+                <td><%= blog.dataValues.baslik %></td>
+                <td>
+                  <a
+                    class="btn btn-sm btn-primary"
+                    href="/admin/blogs/<%= blog.dataValues.blogid %>"
+                  >
+                    Edit
+                  </a>
+                  <a
+                    class="btn btn-sm btn-danger"
+                    href="/admin/blog/delete/<%= blog.dataValues.blogid %>"
+                  >
+                    Delete
+                  </a>
+                </td>
+              </tr>
+              <% }) %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

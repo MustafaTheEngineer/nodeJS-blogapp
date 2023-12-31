@@ -1,0 +1,28 @@
+<div class="row">
+  <div class="col-md-3"><%- include('./category-menu',categories) %></div>
+  <div class="col-md-9">
+    <% if (blogs.length != 0) { %>
+    <h1 class="h3 mb-3"><%=title %></h1>
+    <% blogs.forEach(blog => { %>
+    <a href="/blogs/<%= blog.blogid %>">
+      <div class="card mb-3">
+        <div class="row">
+          <div class="col-md-6">
+            <img
+              src="/static/images/<%= blog.resim %>"
+              class="img-fluid"
+              alt=""
+            />
+          </div>
+          <div class="col-md-6">
+            <div class="card-body">
+              <h5 class="card-title"><%= blog.baslik %></h5>
+              <p class="card-text"><%= blog.altbaslik %></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </a>
+    <% }) %> <% } else { %> <%- include('./no-products') %> <% } %>
+  </div>
+</div>

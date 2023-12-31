@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('../partials/head') %>
+  </head>
+  <body>
+    <%- include('../partials/nav') %>
+    <div class="container mt-3">
+      <div class="row">
+        <div class="col-md-12 mt-3">
+          <% if (action != "undefined") { %>
+            <%if (action=="edit") { %>
+              <div class="alert alert-success"> <%= categoryid %> id numaralı kategori Güncellendi</div>
+            <% } else if (action=="delete") { %>
+              <div class="alert alert-danger">Kategori Silindi</div>
+            <% } else if (action=="delete") { %>
+              <div class="alert alert-danger">Kategori Silindi</div>
+            <% } else if (action=="create") { %>
+              <div class="alert alert-primary">Kategori Oluşturuldu</div>
+            <% } } %>
+
+          <table class="table table-bordered table-striped">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>İsim</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <% categories.forEach(category => { %>
+              <tr>
+                <td><%= category.dataValues.categoryid %></td>
+                <td><%= category.dataValues.isim %></td>
+                <td>
+                  <a
+                    class="btn btn-sm btn-primary"
+                    href="/admin/category/<%= category.dataValues.categoryid %>"
+                  >
+                    Edit
+                  </a>
+                  <a
+                    class="btn btn-sm btn-danger"
+                    href="/admin/category/delete/<%= category.dataValues.categoryid %>"
+                  >
+                    Delete
+                  </a>
+                </td>
+              </tr>
+              <% }) %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

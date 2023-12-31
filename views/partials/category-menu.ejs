@@ -1,0 +1,19 @@
+<div class="list-group">
+  <!-- <% for( let i = 1; i < categories.length; i++ ) { %>
+    <a href="" class="list-group-item list-group-item-action">
+      <%= categories[i] %>
+    </a>
+    <% } %> -->
+  <% categories.forEach(function(category) { %>
+    <% if (title == category.name) { %>
+      <a href="/blogs/category/<%= category.categoryid %>" class="list-group-item list-group-item-action active">
+        <%= category.isim %>
+      </a>
+    <% } else { %>
+      <a href="/blogs/category/<%= category.categoryid %>" class="list-group-item list-group-item-action">
+        <%= category.isim %>
+      </a>
+    <% } %>
+  
+  <% }) %>
+</div>

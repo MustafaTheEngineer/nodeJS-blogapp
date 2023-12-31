@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('../partials/head') %>
+  </head>
+  <body>
+    <%- include('../partials/nav') %>
+
+    <div class="row">
+      <div class="col-md-12">
+        <img src="/static/images/" class="img-fluid" alt="" />
+      </div>
+    </div>
+
+    <form class="mx-5" method="post" enctype="multipart/form-data">
+      <div class="row mb-3">
+        <label for="inputEmail3" class="col-sm-2 col-form-label">Başlık</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" id="baslik" name="baslik" />
+        </div>
+      </div>
+      <div class="row mb-3">
+        <label for="altbaslik" class="col-sm-2 col-form-label">Alt Başlık</label>
+        <div class="col-sm-10">
+          <input
+            type="text"
+            class="form-control"
+            id="altbaslik"
+            name="altbaslik"
+          >
+        </div>
+      </div>
+      <div class="row mb-3">
+        <label for="inputPassword3" class="col-sm-2 col-form-label"
+          >Açıklama</label
+        >
+        <div class="col-sm-10">
+          <label for="aciklama"></label>
+          <!--
+          <textarea
+            name="aciklama"
+            class="form-control"
+            id="editor"
+            rows="10"
+          ></textarea>
+          -->
+
+          <%- include('../partials/editor',{aciklama: null}) %>
+        </div>
+      </div>
+      <div class="row mb-3">
+        <label for="resim" class="col-sm-2 col-form-label">Resim</label>
+        <div class="col-sm-10">
+          <input name="resim" class="form-control" id="resim" type="file" />
+        </div>
+      </div>
+
+      <div class="row mb-3">
+        <label for="kategori" class="col-sm-2 col-form-label">Kategori</label>
+        <div class="col-sm-10">
+          <select name="kategori" id="kategori" class="form-control">
+            <option value="-1" selected>Seçiniz</option>
+            <% categories.forEach(category => { %>
+            <option value="<%= category.dataValues.categoryid %>">
+              <%= category.dataValues.isim %>
+            </option>
+            <% }) %>
+          </select>
+        </div>
+      </div>
+
+      <div class="row mb-3">
+        <div class="col-sm-10 offset-sm-2">
+          <div class="form-check">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              id="anasayfa"
+              name="anasayfa"
+            />
+            <label class="form-check-label" for="anasayfa"> Anasayfa </label>
+          </div>
+
+          <div class="form-check">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              id="onay"
+              name="onay"
+            />
+            <label class="form-check-label" for="onay"> Onay </label>
+          </div>
+        </div>
+      </div>
+
+      <button type="submit" class="btn btn-primary">Ekle</button>
+    </form>
+  </body>
+</html>
